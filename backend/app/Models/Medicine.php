@@ -18,4 +18,12 @@ class Medicine extends Model
 
     public function batches() { return $this->hasMany(MedicineBatch::class); }
     public function stockRequests() { return $this->hasMany(StockRequest::class); }
+
+    public function scopeWithStock($query)
+{
+    return $query->withSum(
+        ['batches as total_stock' => fn ($q) => $q->whereDate('expiration_date', '>=', today())],
+        'quantity'
+    );
+}
 }
