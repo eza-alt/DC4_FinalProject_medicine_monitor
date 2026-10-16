@@ -12,4 +12,8 @@ class StockTransaction extends Model
 public function batch() { return $this->belongsTo(MedicineBatch::class, 'medicine_batch_id'); }
 public function user() { return $this->belongsTo(User::class); }
 public function stockRequest() { return $this->belongsTo(StockRequest::class); }
+
+protected $casts = [
+    'transaction_date' => 'date',
+];
 }
