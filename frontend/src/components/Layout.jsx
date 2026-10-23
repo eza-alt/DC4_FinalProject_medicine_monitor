@@ -18,6 +18,9 @@ export default function Layout() {
           <NavLink to="/medicines">
             Medicines
           </NavLink>
+
+          <NavLink to="/batches">Batches</NavLink>
+          <NavLink to="/requests">Requests</NavLink>
         </nav>
 
         <div className="navbar-user">
