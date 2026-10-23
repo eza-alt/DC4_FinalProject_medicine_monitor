@@ -10,21 +10,25 @@ use Illuminate\Http\Request;
 
 class MedicineController extends Controller
 {
-    public function index(Request $request)
-    {
-        $medicines = Medicine::withStock()
-            ->when($request->search, function ($query, $search) {
-                $query->where(function ($q) use ($search) {
-                    $q->where('name', 'like', "%{$search}%")
-                      ->orWhere('generic_name', 'like', "%{$search}%");
-                });
-            })
-            ->when($request->category, fn ($query, $category) => $query->where('category', $category))
-            ->orderBy('name')
-            ->paginate(10);
+   public function index(Request $request)
+{
+    $query = Medicine::withStock()
+        ->when($request->search, function ($q, $search) {
+            $q->where(function ($w) use ($search) {
+                $w->where('name', 'like', '%' . $search . '%')
+                  ->orWhere('generic_name', 'like', '%' . $search . '%');
+            });
+        })
+        ->when($request->category, fn ($q, $category) => $q->where('category', $category))
+        ->orderBy('name');
 
-        return MedicineResource::collection($medicines);
+    // ?all=1 returns every medicine without pagination (used by dropdowns)
+    if ($request->boolean('all')) {
+        return MedicineResource::collection($query->get());
     }
+
+    return MedicineResource::collection($query->paginate(10));
+}
 
     public function store(MedicineRequest $request)
     {
@@ -47,10 +51,16 @@ class MedicineController extends Controller
         return new MedicineResource($medicine);
     }
 
-    public function destroy(Medicine $medicine)
-    {
-        $medicine->delete();
-
-        return response()->noContent(); // 204
+   public function destroy(Medicine $medicine)
+{
+    if ($medicine->stockRequests()->exists()) {
+        return response()->json([
+            'message' => 'This medicine has stock requests, so it cannot be deleted.',
+        ], 422);
     }
+
+    $medicine->delete();
+
+    return response()->noContent();
+}
 }
