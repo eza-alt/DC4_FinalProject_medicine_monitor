@@ -55,7 +55,7 @@ export default function Medicines() {
 
   // load the list whenever the page, search, category or reload counter changes
   useEffect(() => {
-    setLoading(true);
+    
     api
       .get('/medicines', { params: { page, search: query, category } })
       .then((res) => {

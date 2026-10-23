@@ -46,7 +46,7 @@ export default function Requests() {
   const [cancelling, setCancelling] = useState(null); // staff: the request to cancel
 
   useEffect(() => {
-    setLoading(true);
+    
     api
       .get('/stock-requests', { params: { page, status } })
       .then((res) => {

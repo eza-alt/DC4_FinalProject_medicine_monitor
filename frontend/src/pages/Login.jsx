@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+
 
 export default function Login() {
   const { user, login } = useAuth();
@@ -62,6 +63,9 @@ export default function Login() {
         <button type="submit" disabled={loading}>
           {loading ? 'Logging in...' : 'Login'}
         </button>
+        <p className='subtitle'>
+  No account yet? <Link to='/register'>Register</Link>
+</p>
       </form>
     </div>
   );

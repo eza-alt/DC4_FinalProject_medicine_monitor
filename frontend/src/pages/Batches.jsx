@@ -43,7 +43,7 @@ export default function Batches() {
   }, [search]);
 
   useEffect(() => {
-    setLoading(true);
+   
     api
       .get('/batches', { params: { page, search: query, expiry_status: expiry } })
       .then((res) => {

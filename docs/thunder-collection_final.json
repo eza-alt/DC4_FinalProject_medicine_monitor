@@ -1,0 +1,49 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "final",
+    "collectionId": "6b4906dd-c330-4f6f-9509-8fe1396e39bd",
+    "dateExported": "2026-10-23T13:06:43.534Z",
+    "version": "1.4",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "19f2644a-e4af-48b3-bbd1-24727b46affd",
+            "colId": "6b4906dd-c330-4f6f-9509-8fe1396e39bd",
+            "containerId": "",
+            "name": "http://127.0.0.1:8000/api/medicines",
+            "url": "http://127.0.0.1:8000/api/medicines/1",
+            "method": "DELETE",
+            "sortNum": 10000,
+            "created": "2026-10-23T04:18:05.203Z",
+            "modified": "2026-10-23T04:18:05.203Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "9|8mocyObWnWDn3zBufoDtMeFA3Zze5UBaBNOmtuiQ79a6f644"
+            }
+        },
+        {
+            "_id": "c191cb3e-6265-45b3-a115-5e1accb8d39d",
+            "colId": "6b4906dd-c330-4f6f-9509-8fe1396e39bd",
+            "containerId": "",
+            "name": "http://127.0.0.1:8000/api/login",
+            "url": "http://127.0.0.1:8000/api/login",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2026-10-23T12:28:17.779Z",
+            "modified": "2026-10-23T12:28:17.779Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": [
+                    "{",
+                    "  \"email\": \"admin@healthcenter.test\",",
+                    "  \"password\": \"password123\"",
+                    "}"
+                ],
+                "form": []
+            }
+        }
+    ],
+    "ref": "0AKqHPoELwnwWWajKQ7l8q_w26LGJn7_yhwsV529cVlpj41aeeR2I5pEMEp1DVzOtWX3TPDls3PXwFh7-YgwJQ"
+}

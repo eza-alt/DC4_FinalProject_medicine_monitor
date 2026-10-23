@@ -8,6 +8,7 @@ import Dashboard from './pages/Dashboard';
 import Medicines from './pages/Medicines';
 import Requests from './pages/Requests';
 import Batches from './pages/Batches';
+import Register from './pages/Register';
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
         <Routes>
           {/* Public page: no navbar */}
           <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
 
           {/* Logged-in pages */}
           <Route
